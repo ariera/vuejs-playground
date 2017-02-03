@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>testing vuejs</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css">
+        <!--<link rel="stylesheet" href="css/main.css"> -->
+		<style>
+			body{padding-top: 40px;}
+		</style>
+    </head>	
+    <body>
+    	<div class="container box" id="todo">
+    	<h1 class="title">Todo</h1>
+    		<h2 class="subtitle">The most simple concepts</h2>
+    		<input type="text" v-model="newTodo">
+    		<button @click="addTodo">add</button>
+
+			<ul>
+				<li v-for="todo in todos">{{todo}}</li>
+			</ul>
+    		{{ message }}
+
+		</div>
+    	
+		<div class="container box" id="tabs">
+			<h1 class="title">Tabs</h1>
+			<h2 class="subtitle">Two components, one nested into another, interacting together</h2>
+			<tabs>
+				<tab name="My Movies" selected="true">
+					<h1>This are my Movies</h1>
+					<p>oh! how much do i love Movies</p>
+				</tab>
+
+				<tab name="My Pictures">
+					<h1>This are my Pictures</h1>
+					<p>oh! how much do i love Pictures</p>
+				</tab>
+
+				<tab name="My Music">
+					<h1>This are my Music</h1>
+					<p>oh! how much do i love Music</p>
+				</tab>
+			</tabs>
+    	</div>
+		
+		<div class="container box" id="coupon">
+			<h1 class="title">Coupon</h1>
+			<h2 class="subtitle">Just an example on how to use <code>$emit</code> and events. Type and blur ;)</h2>
+			<coupon @applied="couponApplied"></coupon>	
+		</div>
+		
+		<div class="container box" id="coupon-with-event-hub">
+			<h1 class="title">Coupon (With Event Hub)</h1>
+			<h2 class="subtitle">Same example as before, but now we use a shared <code>EventHub</code> to communicate. No need for one component to be child of another.</h2>
+			<coupon-with-event-hub></coupon-with-event-hub>	
+		</div>
+		
+		<div class="container box" id="modal">
+			<h1 class="title">Modal with named Slots</h1>
+			<button @click="showModal=true">open modal</button>
+			<modal v-show="showModal" @close="showModal = false">
+				<template slot="header"> This is my muy awesome modal</template>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error magnam sed officia ab reprehenderit ratione, odit praesentium at repellendus, blanditiis debitis esse. Dolor exercitationem, et corrupti ipsa ipsam possimus voluptatibus?
+			</modal>	
+		</div>
+		
+		<div class="container box" id="custom-input">
+			<h1 class="title">Custom Input</h1>
+			<h2 class="subtitle">Learn how to do your own <code>v-model</code>. Useful if you want to have validations embeded in the field itself, for example. In this example we validate the age of the user.
+			<small> 
+				<a href="https://vuejs.org/v2/guide/components.html#Form-Input-Components-using-Custom-Events">https://vuejs.org/v2/guide/components.html#Form-Input-Components-using-Custom-Events
+				</a>
+			</small>
+			</h2>
+			<h3>{{user.name}} is {{user.age}} years old.</h3>
+			<age v-model="user.age"></age>
+		</div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+        <script src="js/todo.js"></script>
+        <script src="js/tabs.js"></script>
+        <script src="js/coupon.js"></script>
+        <script src="js/coupon-with-event-hub.js"></script>
+        <script src="js/modal.js"></script>
+        <script src="js/custom-input.js"></script>
+    </body>
+</html>
